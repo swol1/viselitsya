@@ -13,14 +13,12 @@ class Game
   end
 
   def get_letters(slovo)
-    if slovo == nil || slovo == ""
-      abort "Для игры введите загаданное слово в качестве аргумента при запуске программы"
-    end
     slovo.encode('UTF-8').split("")
   end
 
   def ask_next_letter
-    puts "\n Введите следующую букву"
+    puts
+    puts "Введите следующую букву"
 
     letter = ""
 
@@ -32,13 +30,9 @@ class Game
   end
 
   def next_step(bukva)
-    if @status == -1 || @status == 1
-      return
-    end
+    return if @status == -1 || @status == 1
 
-    if @good_letters.include?(bukva) || @bad_letters.include?(bukva)
-      return
-    end
+    return if @good_letters.include?(bukva) || @bad_letters.include?(bukva)
 
     if bukva == "е" && @letters.include?("ё")
       @good_letters << "ё"
@@ -52,18 +46,11 @@ class Game
 
     if @letters.include?(bukva)
       @good_letters << bukva
-
-      if good_letters.size == letters.uniq.size
-        @status = 1
-      end
+      @status = 1 if good_letters.size == letters.uniq.size
     else
       @bad_letters << bukva
-
       @errors += 1
-
-      if @errors >= 7
-        @status = -1
-      end
+      @status = -1 if @errors >= 7
     end
   end
 

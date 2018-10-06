@@ -2,12 +2,10 @@ class ResultPrinter
   def initialize
     @status_image = []
 
-    current_path = File.dirname(__FILE__)
-
     counter = 0
 
     while counter <= 7
-      file_name = current_path + "/image/#{counter}.txt"
+      file_name = File.dirname(__FILE__) + "/image/#{counter}.txt"
 
       begin
         file = File.new(file_name, "r:UTF-8")
@@ -46,7 +44,7 @@ class ResultPrinter
   def get_word_for_print(letters, good_letters)
   result = ""
 
-    for letter in letters
+    letters.each do |letter|
       if good_letters.include?(letter)
         result += letter + " "
       else
@@ -54,7 +52,7 @@ class ResultPrinter
       end
     end
 
-    return result
+    result
   end
 
   def cls
