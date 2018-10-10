@@ -7,24 +7,27 @@ if (Gem.win_platform?)
   end
 end
 
-require_relative "game"
-require_relative "result_printer"
-require_relative "word_reader"
+require_relative "lib/game"
+require_relative "lib/result_printer"
+require_relative "lib/word_reader"
 
-puts "Игра Виселица"
+VERSION = "Игра Виселица, версия 5. (c) Хороший программист"
 
 reader = WordReader.new
-printer = ResultPrinter.new
+words_file_name = "#{File.dirname(__FILE__)}/data/words.txt"
 
 if ARGV[0] == nil
-  slovo = reader.read_from_file(File.dirname(__FILE__) + "/data/word.txt")
+  slovo = reader.read_from_file(words_file_name)
 else
   slovo = ARGV[0]
 end
 
 game = Game.new(slovo)
+game.version = VERSION
 
-while game.status == 0
+printer = ResultPrinter.new(game)
+
+while game.in_progress?
   printer.print_status(game)
   game.ask_next_letter
 end
