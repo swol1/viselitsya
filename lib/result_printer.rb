@@ -32,11 +32,11 @@ class ResultPrinter
     if game.lost?
       puts
       puts "Вы проиграли :("
-      puts "Загаданное слово было: " + game.letters.join("")
+      puts "Загаданное слово было: #{game.letters.join("")}".colorize(:red)
       puts
     elsif game.won?
       puts
-      puts "Поздравляем, вы выиграли!"
+      puts "Поздравляем, вы выиграли!".colorize(:light_green)
       puts
     else
       puts "У вас осталось ошибок: #{game.errors_left}"

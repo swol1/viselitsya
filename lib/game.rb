@@ -80,11 +80,11 @@ class Game
 
     return if @status == :lost || @status == :won
 
-    return if repeated?
+    return if repeated?(letter)
 
     if good?(letter)
       add_letter_to(@good_letters, letter)
-      @status = :won if solved
+      @status = :won if solved?
     else
       add_letter_to(@bad_letters, letter)
       @errors += 1

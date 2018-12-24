@@ -11,6 +11,8 @@ require_relative "lib/game"
 require_relative "lib/result_printer"
 require_relative "lib/word_reader"
 
+require 'colorize'
+
 VERSION = "Игра Виселица, версия 5. (c) Хороший программист"
 
 reader = WordReader.new
@@ -23,7 +25,7 @@ else
 end
 
 game = Game.new(slovo)
-game.version = VERSION
+game.version = VERSION.colorize(:blue)
 
 printer = ResultPrinter.new(game)
 
