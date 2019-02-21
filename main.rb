@@ -13,16 +13,12 @@ require_relative "lib/word_reader"
 
 require 'colorize'
 
-VERSION = "Игра Виселица, версия 5. (c) Хороший программист"
+VERSION = "Игра Виселица. Версия 5"
 
 reader = WordReader.new
 words_file_name = "#{File.dirname(__FILE__)}/data/words.txt"
 
-if ARGV[0] == nil
-  slovo = reader.read_from_file(words_file_name)
-else
-  slovo = ARGV[0]
-end
+slovo = ARGV[0] ||= reader.read_from_file(words_file_name)
 
 game = Game.new(slovo)
 game.version = VERSION.colorize(:blue)

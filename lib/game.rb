@@ -6,7 +6,6 @@ class Game
 
   def initialize(slovo)
     @letters = get_letters(slovo)
-    @letters.each { |letter| letter.downcase! }
     @errors = 0
     @good_letters = []
     @bad_letters = []
@@ -15,7 +14,7 @@ class Game
   end
 
   def get_letters(slovo)
-    slovo.encode('UTF-8').split("")
+    slovo.encode('UTF-8').downcase.split("")
   end
 
   def max_errors
@@ -38,10 +37,14 @@ class Game
     letters << letter
 
     case letter
-    when 'и' then letters << 'й'
-    when 'й' then letters << 'и'
-    when 'е' then letters << 'ё'
-    when 'ё' then letters << 'е'
+    when 'и'
+      letters << 'й'
+    when 'й'
+      letters << 'и'
+    when 'е'
+      letters << 'ё'
+    when 'ё'
+      letters << 'е'
     end
   end
 
@@ -70,16 +73,12 @@ class Game
     puts "Введите следующую букву"
 
     letter = ""
-
     letter = STDIN.gets.encode("UTF-8").chomp.downcase while letter == ""
-
     next_step(letter)
   end
 
   def next_step(letter)
-
     return if @status == :lost || @status == :won
-
     return if repeated?(letter)
 
     if good?(letter)

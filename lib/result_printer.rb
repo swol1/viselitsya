@@ -44,15 +44,15 @@ class ResultPrinter
   end
 
   def get_word_for_print(letters, good_letters)
-  result = ""
+    result = ""
 
-  letters.each do |letter|
-    result += if good_letters.include?(letter)
-                letter + " "
-              else
-                "__ "
-              end
-  end
+    letters.each do |letter|
+      result += if good_letters.include?(letter)
+                  letter + " "
+                else
+                  "__ "
+                end
+    end
 
     result
   end
