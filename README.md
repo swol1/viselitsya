@@ -6,11 +6,14 @@
 
 [![Watch the demo](https://i.imgur.com/dH2Qt68.png)](https://asciinema.org/a/jxNT97Zz316JtFWaEPeAdESEx)
 
-Использовалась версия Ruby 2.5.1
+## Стек
+Ruby 2.5.0+
+
+[Colorize](https://github.com/fazibear/colorize)
 
 ## Как запустить
 
-В программе используется gem 'colorize', для его установки пропишите:
+В консоли, в папке с программой, пропишите:
 
 ```
 bundle install
