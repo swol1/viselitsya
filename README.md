@@ -6,7 +6,7 @@
 
 [![Watch the demo](https://i.imgur.com/dH2Qt68.png)](https://asciinema.org/a/jxNT97Zz316JtFWaEPeAdESEx)
 
-### Как запустить
+## Как запустить
 
 В программе используется gem 'colorize', для его установки пропишите:
 
